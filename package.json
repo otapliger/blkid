@@ -1,0 +1,27 @@
+{
+  "name": "@otapliger/blkid",
+  "version": "0.1.0",
+  "description": "Module for the blkid linux command",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Otavio Pliger",
+    "email": "me@otaviopliger.com",
+    "url": "https://otaviopliger.com"
+  },
+  "keywords": [
+    "blkid",
+    "block",
+    "disk",
+    "id",
+    "info",
+    "device",
+    "partition",
+    "filesystem",
+    "libblkid",
+    "linux"
+  ],
+  "dependencies": {
+    "execa": "^1.0.0"
+  }
+}
