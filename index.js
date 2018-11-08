@@ -14,7 +14,7 @@ const run = args => execa('blkid', args)
         })
     )
 
-const blkid = () => run('-c /dev/null');
+const blkid = () => run('-c /dev/null')
 
 blkid.partition = path => run('-c /dev/null').then(list => {
     return list.find(function (e) {
@@ -22,4 +22,4 @@ blkid.partition = path => run('-c /dev/null').then(list => {
     })
 })
 
-module.exports = blkid;
+module.exports = blkid
