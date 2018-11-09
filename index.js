@@ -1,15 +1,24 @@
 const execa = require('execa')
+const _ = require('lodash')
 
 const run = args => execa('blkid', args)
     .then(response =>
         response.stdout.split('\n').map(x => {
+
+            const path = x.match(/^(\S+)\:/)
+            const uuid = x.match(/\bUUID\b\=\"([^\"]+)\"/)
+            const type = x.match(/\bTYPE\b\=\"([^\"]+)\"/)
+            const label = x.match(/\bLABEL\b\=\"([^\"]+)\"/)
+            const partuuid = x.match(/\bPARTUUID\b\=\"([^\"]+)\"/)
+            const partlabel = x.match(/\bPARTLABEL\b\=\"([^\"]+)\"/)
+
             return {
-                path: (x.match(/^(\S+)\:/) || [null])[1],
-                uuid: (x.match(/\bUUID\b\=\"([^\"]+)\"/) || [null])[1],
-                type: (x.match(/\bTYPE\b\=\"([^\"]+)\"/) || [null])[1],
-                label: (x.match(/\bLABEL\b\=\"([^\"]+)\"/) || [null])[1],
-                partuuid: (x.match(/\bPARTUUID\b\=\"([^\"]+)\"/) || [null])[1],
-                partlabel: (x.match(/\bPARTLABEL\b\=\"([^\"]+)\"/) || [null])[1]
+                path: _.get(path, '[1]', 'unknown'),
+                uuid: _.get(uuid, '[1]', 'unknown'),
+                type: _.get(type, '[1]', 'unknown'),
+                label: _.get(label, '[1]', 'unknown'),
+                partuuid: _.get(partuuid, '[1]', 'unknown'),
+                partlabel: _.get(partlabel, '[1]', 'unknown'),
             }
         })
     )
