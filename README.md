@@ -25,6 +25,11 @@ blkid().then(response => {
 blkid.partition("/dev/sda1").then(response => {
   console.log(response)
 })
+
+// GET INFO FROM ALL PARTITIONS OF A SPECIFIC TYPE
+blkid.fs("ext4").then(response => {
+  console.log(response)
+})
 ```
 
 ## API
@@ -35,9 +40,15 @@ Returns a promise for an array of partitions
 
 ### blkid.partition(path)
 
-Returns a promise for an object with the info for the specified partition
+Returns a promise for an array containing a specific partition
 
 * *path* - the path to the partition
+
+### blkid.fs(type)
+
+Returns a promise for an array of partitions with a specific type of filesystem
+
+* *type* - the type of filesystem
 
 ## LICENSE
 

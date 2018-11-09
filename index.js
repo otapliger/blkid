@@ -31,4 +31,10 @@ blkid.partition = path => run('-c /dev/null').then(list => {
     })
 })
 
+blkid.fs = type => run('-c /dev/null').then(list => {
+    return list.filter(function (e) {
+        return e.type === type
+    })
+})
+
 module.exports = blkid
