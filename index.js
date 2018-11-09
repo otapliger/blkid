@@ -26,15 +26,11 @@ const run = args => execa('blkid', args)
 const blkid = () => run('-c /dev/null')
 
 blkid.partition = path => run('-c /dev/null').then(list => {
-    return list.find(function (e) {
-        return e.path === path
-    })
+    return list.find(f => f.path == path)
 })
 
 blkid.fs = type => run('-c /dev/null').then(list => {
-    return list.filter(function (e) {
-        return e.type === type
-    })
+    return list.filter(f => f.type == type)
 })
 
 module.exports = blkid
