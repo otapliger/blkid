@@ -9,6 +9,10 @@
     "email": "me@otaviopliger.com",
     "url": "https://otaviopliger.com"
   },
+  "repository": {
+    "type" : "git",
+    "url" : "git+https://github.com/otapliger/blkid.git"
+  },
   "keywords": [
     "blkid",
     "block",
